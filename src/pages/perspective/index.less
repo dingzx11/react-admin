@@ -1,0 +1,259 @@
+.box-wrap{
+  height: 500px;
+  width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+@keyframes example {
+  100% { transform: rotateX(360deg); }
+}
+
+@keyframes example2 {
+  0% { transform:  rotateX(0deg); }
+  15% { transform:  rotateX(90deg); }
+  25% { transform:  rotateX(90deg); }
+  40% { transform:  rotateX(180deg); }
+  50% { transform:  rotateX(180deg); }
+  65% { transform: rotateX(270deg); }
+  75% { transform: rotateX(270deg); }
+  90% { transform:  rotateX(360deg); }
+  100% { transform: rotateX(360deg); }
+}
+
+.sides{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: example2 15s linear infinite;
+  &:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border:3px dotted rgba(0,0,0,.25);
+    box-sizing: border-box;
+  }
+  li{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    border:5px solid #9aa;
+    visibility: hidden;
+    background:rgba(211,0,0,.33);
+    text-align: center;
+    line-height: 300px;
+    &.back{
+      visibility: visible;
+      transform: translateZ(-150px) rotateX(180deg);
+      background: rgba(32, 170, 151, 0.33);
+    }
+    &.left{
+      visibility: visible;
+      transform: translateX(-150px) rotateY(90deg);
+      background: rgba(153, 153, 153, 0.33);
+    }
+    &.right{
+      visibility: visible;
+      transform: translateX(150px) rotateY(90deg);
+      background: rgba(153, 153, 153, 0.33);
+    }
+    &.top{
+      visibility: visible;
+      transform: translateY(-150px) rotateX(90deg);
+    }
+    &.bottom{
+      visibility: visible;
+      transform: translateY(150px) rotateX(270deg);
+    }
+    &.front{
+      visibility: visible;
+      transform: translateZ(150px);
+      background: rgba(32, 170, 151, 0.33);
+    }
+  }
+}
+
+
+
+
+.con {
+  overflow: hidden;
+  min-height: 448px;
+  position: relative;
+}
+
+.title {
+  padding: 25px;
+  font: 40px/50px 'Trebuchet MS', sans-serif;
+}
+
+.options {
+  float: left;
+  position: relative;
+  width: 207px;
+  padding-left: 45px;
+}
+
+.options li {
+  margin: 0 0 30px 0;
+  font: 20px/1 'Trebuchet MS', sans-serif;
+  list-style: none;
+}
+
+.options li:last-child {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.options label {
+  cursor: pointer;
+}
+
+.scene {
+  position: relative;
+  margin-left: 252px;
+  width: 300px;
+  height: 300px;
+  perspective: 1200px;
+}
+
+.cube {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+}
+
+.cube::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px dotted #000;
+  opacity: .25;
+  box-sizing: border-box;
+}
+
+.side {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  box-sizing: border-box;
+  background-color: #20aa97;
+  padding: 125px 0;
+  font: 50px/1 'Trebuchet MS', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.dot {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px;
+  border-radius: 10px;
+  background: #d00;
+}
+
+.i {
+  position: absolute;
+  left: 20px;
+}
+
+.i1 {
+  top: 100px;
+}
+.i2 {
+  top: 150px;
+}
+.i3 {
+  top: 200px;
+}
+.i4 {
+  top: 250px;
+}
+.i5 {
+  top: 300px;
+}
+.i6 {
+  top: 350px;
+}
+
+.i2:checked ~ .scene .side {
+  transform-origin: 50% 0;
+}
+.i3:checked ~ .scene .side {
+  transform-origin: 0 0;
+}
+.i4:checked ~ .scene .side {
+  transform-origin: left bottom;
+}
+.i5:checked ~ .scene  .side {
+  transform-origin: 50% 50% -150px;
+  animation: rotate3d 5s infinite linear;
+}
+.i6:checked ~ .scene .side {
+  backface-visibility: hidden;
+}
+
+.i1:checked ~ .scene .side,
+.i2:checked ~ .scene .side,
+.i3:checked ~ .scene .side,
+.i4:checked ~ .scene .side {
+  animation: rotate2d 5s infinite linear;
+}
+
+.i1:checked ~ .scene .dot {
+  display: block;
+}
+.i2:checked ~ .scene .dot {
+  display: block;
+  top: 0;
+}
+.i3:checked ~ .scene .dot {
+  display: block;
+  top: 0;
+  left: 0;
+}
+.i4:checked ~ .scene .dot {
+  display: block;
+  top: 100%;
+  left: 0;
+}
+.i5:checked ~ .scene .dot {
+  display: block;
+  opacity: 0;
+  animation: dot 5s infinite linear;
+}
+
+@keyframes rotate2d {
+  100% { transform: rotate(360deg); }
+}
+@keyframes rotate3d {
+  100% { transform: rotateX(360deg); }
+}
+@keyframes dot {
+  0% { opacity: 0; }
+  14.3% { opacity: 0; }
+  14.4% { opacity: 1; }
+  85.6% { opacity: 1; }
+  85.7% { opacity: 0; }
+  100% { opacity: 0; }
+}

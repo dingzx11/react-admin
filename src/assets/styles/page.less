@@ -1,0 +1,45 @@
+.page-wrap{
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  overflow: auto;
+}
+.page-menu{
+  display: flex;
+  background: #b0b0b0;
+  line-height: 45px;
+  li{
+    padding: 0 10px;
+    a{
+      font-size: 20px;
+    }
+  }
+}
+.page-main{
+  padding: 10px;
+  flex:1;
+  overflow: auto;
+}
+
+
+button{
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #24292e;
+  background: #fafbfc;
+  border:1px solid rgba(27,31,35,.15);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color .2s;
+  &:hover{
+    background-color: #f3f4f6;
+  }
+}
+
+.wrap-box{
+  height: 500px;
+}
